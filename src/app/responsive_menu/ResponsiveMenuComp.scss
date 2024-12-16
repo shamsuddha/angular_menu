@@ -1,0 +1,144 @@
+/* Main menu bar styles */
+.navbar {
+  background-color: #202123;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.menu-item {
+  position: relative;
+  padding: 0px 20px;
+  cursor: pointer;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: rgb(241, 240, 240);
+  padding: 10px 15px;
+  display: block;
+}
+
+.menu-item:hover>a {
+  background-color: #505050;
+  color: #cdcdcd;
+}
+
+/* Submenu (Dropdown) */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  border: 1px solid #ddd;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  min-width: 200px;
+}
+
+.submenu-item {
+  position: relative;
+}
+
+.submenu a {
+  padding: 10px 15px;
+  display: block;
+  text-decoration: none;
+  color: rgb(241, 240, 240);
+  border: none;
+
+}
+
+.submenu a:hover {
+  background-color: #505050;
+  color: #abababb5;
+  border: none;
+
+}
+
+.submenu .submenu {
+  top: 0;
+  left: 100%;
+  margin-left: 1px;
+  border: none;
+
+}
+
+/* Show submenu when clicked */
+.show {
+  display: block;
+}
+
+/* Ensure dropdown arrow appears for nested submenus */
+.submenu-item>a::after {
+  content: " ▶";
+  float: right;
+  padding-left: 10px;
+}
+
+/* Hamburger menu button for mobile */
+.navbar-toggler {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  /* Show hamburger menu */
+  .navbar-toggler {
+    display: block;
+  }
+
+  /* Set the menu to be vertical and hidden initially */
+  .menu {
+    flex-direction: column;
+    display: none;
+  }
+
+  /* Display the menu vertically on mobile */
+  .menu.show {
+    display: flex;
+    flex-direction: column;
+    border: none;
+
+  }
+
+  /* Submenus should also be displayed vertically on mobile */
+  .submenu {
+    position: relative;
+    left: 0;
+    top: 0;
+    border: none;
+  }
+
+  /* Second and third level submenus should also stack vertically */
+  .submenu .submenu {
+    position: relative;
+    margin-left: 0;
+    border: none;
+
+  }
+
+  /* Make sure dropdown arrows appear for each level on mobile */
+  .submenu-item>a::after {
+    content: " ▼";
+    padding-left: 10px;
+    border: none;
+
+  }
+}

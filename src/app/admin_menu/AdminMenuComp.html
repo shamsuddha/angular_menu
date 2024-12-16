@@ -1,0 +1,69 @@
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <!-- <svg class="icon">
+        <use xlink:href="#icon.d7320556"></use>
+      </svg> -->
+      </button>
+    <div class="logo-text" *ngIf="!isLeftSidebarCollapsed()">
+      App
+    </div>
+    <button class="btn-close" (click)="closeSidebar()" *ngIf="!isLeftSidebarCollapsed()">
+      <!-- <fa-icon [icon]="faClose" class="sidenav-link-icon"></fa-icon> -->
+    </button>
+  </div>
+  <div class="sidenav-nav">
+    <ul class="nav-list">
+      <li *ngFor="let item of menuItemList" class="sidenav-nav-item">
+        <!-- Menu item with no submenu -->
+        <a class="sidenav-nav-link" *ngIf="!item.subMenuItemList" [routerLink]="item.routerLink">
+          <!-- <fa-icon [icon]="item.icon" class="sidenav-link-icon"></fa-icon> -->
+          <span class="sidenav-link-text" *ngIf="!isLeftSidebarCollapsed()">{{ item.label }}</span>
+        </a>
+        <!-- Menu item with submenu -->
+        <div *ngIf="item.subMenuItemList">
+          <a class="sidenav-nav-link d-flex justify-content-between align-items-center" (click)="toggleMenu(item.id)">
+            <!-- Left side (Icon and Label) -->
+            <div class="d-flex align-items-center">
+              <!-- <fa-icon [icon]="item.icon" class="sidenav-link-icon"></fa-icon> -->
+              <span class="sidenav-link-text ml-2">{{ item.label }}</span>
+            </div>
+            <!-- Right side (Chevron Icon) -->
+            <!-- <fa-icon *ngIf="!isLeftSidebarCollapsed()" [icon]="menuStates[item.id] ? faChevronDown : faChevronRight"
+              class="sidenav-link-chevron-icon">
+            </fa-icon> -->
+          </a>
+          <!-- Submenu - Level 1 -->
+          <ul *ngIf="!isLeftSidebarCollapsed()" [ngClass]="{'submenu': true, 'show': menuStates[item.id]}"
+            class="nav flex-column" style="list-style: none;">
+            <li *ngFor="let subItem of item.subMenuItemList" class="sidenav-nav-item">
+              <a *ngIf="!subItem.subMenuItemList" [routerLink]="subItem.routerLink" class="sidenav-nav-link">
+                <!-- <fa-icon [icon]="subItem.icon" class="sidenav-link-icon"></fa-icon> -->
+                {{ subItem.label }}
+              </a>
+              <!-- Nested submenu (Level 2) -->
+              <div *ngIf="subItem.subMenuItemList">
+                <a class="sidenav-nav-link" (click)="toggleMenu(subItem.id)">
+                  <!-- <fa-icon [icon]="subItem.icon" class="sidenav-link-icon"></fa-icon> -->
+                  <!-- <i class="{{subItem.icon}}"></i> -->
+                  {{ subItem.label }}
+                  <!-- <fa-icon *ngIf="!isLeftSidebarCollapsed()"
+                    [icon]="menuStates[subItem.id] ? faChevronDown : faChevronRight" class="sidenav-link-chevron-icon">
+                  </fa-icon> -->
+                </a>
+                <ul [ngClass]="{'d-none': !menuStates[subItem.id]}" class="nav flex-column ml-3">
+                  <li *ngFor="let subSubItem of subItem.subMenuItemList" class="sidenav-nav-item">
+                    <a [routerLink]="subSubItem.routerLink" class="sidenav-nav-link">
+                      <!-- <fa-icon [icon]="subSubItem.icon" class="sidenav-link-icon"></fa-icon> -->
+                      {{ subSubItem.label }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

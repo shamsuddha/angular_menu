@@ -1,0 +1,44 @@
+<nav class="navbar_horizontal">
+  <ul class="menu" [class.show]="isMainMenuOpen">
+    <li *ngFor="let itemL1 of menuItemList" class="menu-item">
+      <a (click)="toggleDropdown(itemL1.id)">{{ itemL1.label }}</a>
+      <ul class="submenu" [class.show]="!itemL1.closed">
+        <li *ngFor="let itemL2 of itemL1.subMenuItemList" class="submenu-item">
+          <a (click)="toggleDropdown(itemL2.id)">{{ itemL2.label }}</a>
+          <ul class="submenu" [class.show]="!itemL2.closed">
+            <li *ngFor="let itemL3 of itemL2.subMenuItemList">
+              <a (click)="toggleDropdown(itemL3.id)">{{ itemL3.label }}</a>
+              <ul class="submenu" [class.show]="!itemL3.closed">
+                <li *ngFor="let itemL4 of itemL3.subMenuItemList">
+                  <a>{{ itemL4.label }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar_vertical">
+  <ul class="menu" [class.show]="isMainMenuOpen">
+    <li *ngFor="let itemL1 of menuItemList" class="menu-item">
+      <a (click)="toggleDropdown(itemL1.id)">{{ itemL1.label }}</a>
+      <ul class="submenu" [class.show]="!itemL1.closed">
+        <li *ngFor="let itemL2 of itemL1.subMenuItemList" class="submenu-item">
+          <a (click)="toggleDropdown(itemL2.id)">{{ itemL2.label }}</a>
+          <ul class="submenu" [class.show]="!itemL2.closed">
+            <li *ngFor="let itemL3 of itemL2.subMenuItemList">
+              <a (click)="toggleDropdown(itemL3.id)">{{ itemL3.label }}</a>
+              <ul class="submenu" [class.show]="!itemL3.closed">
+                <li *ngFor="let itemL4 of itemL3.subMenuItemList">
+                  <a>{{ itemL4.label }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
