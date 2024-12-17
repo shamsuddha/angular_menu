@@ -1,5 +1,5 @@
 ### Responsive Menu
-on computer view it will be horizontal 
+on computer view it will be horizontal
 in mobile and tab view it will be vertical
 
 ### Admin Menu

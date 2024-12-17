@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuItem } from '../MenuItem';
 import { ResponsiveMenuItemList } from './ResponsiveMenuItemList';
+import { MenuItem } from '../../MenuItem';
 
 @Component({
   selector: 'ResponsiveMenuComp',

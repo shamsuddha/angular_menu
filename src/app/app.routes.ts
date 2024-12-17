@@ -1,23 +1,22 @@
 import { Routes } from '@angular/router';
 import { DashboardComp } from './dashboard/DashboardComp';
 import { SettingComp } from './setting/SettingComp';
-import { AdminMenuComp } from './admin_menu/AdminMenuComp';
-import { ResponsiveMenuComp } from './responsive_menu/ResponsiveMenuComp';
+import { AdminMenuComp } from './theme/admin_menu/AdminMenuComp';
 
 export const routes: Routes = [
-  // {
-  //   path: '/', 
-  //   loadComponent: () => import('./module/authenticated/AuthenticatedComp').then(m => m.AuthenticatedComp),
-  //   children: [
-  //     { path: 'dashboard',
-  //     loadComponent: () => import('./module/authenticated/dashboard/DashboardComp').then(m => m.DashboardComp)
-  //     },
-  //   ]
-  // },
+  {
+    path: '', 
+    loadComponent: () => import('./theme/ThemeComp').then(m => m.ThemeComp),
+    children: [
+      { path: 'river',
+      loadComponent: () => import('./theme/river/RiverComp').then(m => m.RiverComp)
+      },    
+      { path: 'mountain',
+      loadComponent: () => import('./theme/mountain/MountainComp').then(m => m.MountainComp)
+      }
+    ]
+  },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComp },
-  { path: 'settings', component: SettingComp },
-  { path: 'admin-menu', component: AdminMenuComp },
-  { path: 'responsive-menu', component: ResponsiveMenuComp },
+  
 ];

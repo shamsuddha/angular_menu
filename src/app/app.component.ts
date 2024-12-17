@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { LayoutComp } from "./layout/LayoutComp";
-import { AdminMenuComp } from "./admin_menu/AdminMenuComp";
+import { AdminMenuComp } from "./theme/admin_menu/AdminMenuComp";
 import { RouterOutlet } from '@angular/router';
-import { ResponsiveMenuComp } from "./responsive_menu/ResponsiveMenuComp";
+import { ResponsiveMenuComp } from './theme/responsive_menu/ResponsiveMenuComp';
+
 
 @Component({
   selector: 'app-root',

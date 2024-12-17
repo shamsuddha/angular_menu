@@ -1,4 +1,4 @@
-<nav class="navbar_horizontal">
+<nav class="navbar">
   <ul class="menu" [class.show]="isMainMenuOpen">
     <li *ngFor="let itemL1 of menuItemList" class="menu-item">
       <a (click)="toggleDropdown(itemL1.id)">{{ itemL1.label }}</a>
@@ -20,7 +20,7 @@
     </li>
   </ul>
 </nav>
-<nav class="navbar_vertical">
+<!-- <nav>
   <ul class="menu" [class.show]="isMainMenuOpen">
     <li *ngFor="let itemL1 of menuItemList" class="menu-item">
       <a (click)="toggleDropdown(itemL1.id)">{{ itemL1.label }}</a>
@@ -41,4 +41,4 @@
       </ul>
     </li>
   </ul>
-</nav>
+</nav> -->
