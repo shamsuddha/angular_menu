@@ -1,26 +1,20 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  selector: 'SvgIconComp',
-  templateUrl: 'SvgIconComp.html',
-  styleUrls: ['SvgIconComp.scss'],
-  standalone: true,
-  imports: [CommonModule]
+  selector: 'app-svg-icon',
+  template: '',
+  styleUrls: ['./SvgIconComp.scss'],
+  standalone: true
 })
+export class SvgIconComponent {
 
-export class SvgIconComp implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() { }
-
+  @HostBinding('style.mask-image')
   @HostBinding('style.-webkit-mask-image')
-  private _path!: string;
+  private _path: string = "";
 
-  @Input()
-  public set path(filePath: string) {
-    this._path = `url("${filePath}")`;
+  @Input() set path(value: string) {
+    this._path = `url(${value})`;
   }
 
+  constructor() {}
 }

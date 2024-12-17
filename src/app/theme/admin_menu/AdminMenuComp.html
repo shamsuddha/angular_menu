@@ -1,8 +1,9 @@
 <div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      <SvgIconComp class="green" [path]="'assets/svg_icon/bars-solid.svg'"></SvgIconComp>
-      <img src="/public/assets/svg_icon/bars-solid.svg" alt="Icon">      
+      
+      <app-svg-icon [path]="'../../../../public/assets/icon/bars-solid.svg'"></app-svg-icon>
+      <!-- <img src="/public/assets/svg_icon/bars-solid.svg" alt="Icon">       -->
 
       </button>
 

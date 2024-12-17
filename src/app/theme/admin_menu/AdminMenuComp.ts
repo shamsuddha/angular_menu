@@ -1,7 +1,7 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
-import { SvgIconComp } from "../../svg_icon/SvgIconComp";
+import { SvgIconComponent } from '../../svg_icon/SvgIconComp';
 //import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { faChevronDown, faChevronRight, faHome, faUser, faBars, faClose, faCog, faPenNib } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,7 +10,7 @@ import { SvgIconComp } from "../../svg_icon/SvgIconComp";
   templateUrl: 'AdminMenuComp.html',
   styleUrls: ['AdminMenuComp.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule, SvgIconComp]
+  imports: [CommonModule, RouterModule, SvgIconComponent]
 })
 
 export class AdminMenuComp {
