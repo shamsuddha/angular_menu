@@ -1,0 +1,10 @@
+<HeaderComp></HeaderComp>
+<AdminMenuComp [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()" 
+(changeLeftSidebarCollapsed)="changeLeftSidebarCollapsed($event)"></AdminMenuComp>
+<!-- <ResponsiveMenuComp></ResponsiveMenuComp> -->
+<ContentComp [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+[screenWidth]="screenWidth()">
+</ContentComp>
+
+<FooterComp></FooterComp>
+

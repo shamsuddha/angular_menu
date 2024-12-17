@@ -1,25 +1,16 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComp } from "./header/HeaderComp";
-import { FooterComp } from "./footer/FooterComp";
-import { ContentComp } from "./content/ContentComp";
+import { ContentComp } from './content/ContentComp';
+import { HeaderComp } from './header/HeaderComp';
+import { FooterComp } from './footer/FooterComp';
+import { ResponsiveMenuComp } from './responsive_menu/ResponsiveMenuComp';
 import { AdminMenuComp } from './admin_menu/AdminMenuComp';
-import { ResponsiveMenuComp } from "./responsive_menu/ResponsiveMenuComp";
 
 @Component({
   selector: 'ThemeComp',
-  template: `
-  <HeaderComp></HeaderComp>
-  <!-- <AdminMenuComp [isLeftSidebarCollapsed] = "isLeftSidebarCollapsed()" 
-(changeLeftSidebarCollapsed)="changeLeftSidebarCollapsed($event)"></AdminMenuComp> -->
-<ResponsiveMenuComp></ResponsiveMenuComp>
-  <ContentComp>
-
-  </ContentComp>
-  <FooterComp></FooterComp>
-  `,
+  templateUrl: 'ThemeComp.html',
   standalone: true,
-  imports: [CommonModule, AdminMenuComp, HeaderComp, FooterComp, ContentComp, ResponsiveMenuComp]
+  imports: [CommonModule, ContentComp, HeaderComp, FooterComp, AdminMenuComp, ResponsiveMenuComp]
 })
 
 export class ThemeComp implements OnInit {
@@ -27,9 +18,18 @@ export class ThemeComp implements OnInit {
   isLeftSidebarCollapsed = signal<boolean>(false);
   screenWidth = signal<number>(window.innerWidth);
 
-  constructor() { }
+  ngOnInit(): void {
+    this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+  }
 
-  ngOnInit() { }
+  @HostListener('window:resize')
+
+  onResize() {
+    this.screenWidth.set(window.innerWidth);
+    if (this.screenWidth() < 768) {
+      this.isLeftSidebarCollapsed.set(true);
+    }
+  }
 
   changeLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
     this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);

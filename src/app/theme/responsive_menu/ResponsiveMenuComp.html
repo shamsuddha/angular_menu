@@ -10,7 +10,12 @@
               <a (click)="toggleDropdown(itemL3.id)">{{ itemL3.label }}</a>
               <ul class="submenu" [class.show]="!itemL3.closed">
                 <li *ngFor="let itemL4 of itemL3.subMenuItemList">
-                  <a>{{ itemL4.label }}</a>
+                  <a (click)="toggleDropdown(itemL4.id)">{{ itemL4.label }}</a>
+                  <ul class="submenu" [class.show]="!itemL4.closed">
+                    <li *ngFor="let itemL5 of itemL4.subMenuItemList">
+                      <a (click)="toggleDropdown(itemL5.id)">{{ itemL5.label }}</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>

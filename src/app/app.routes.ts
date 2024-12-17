@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { DashboardComp } from './dashboard/DashboardComp';
-import { SettingComp } from './setting/SettingComp';
 import { AdminMenuComp } from './theme/admin_menu/AdminMenuComp';
 
 export const routes: Routes = [
@@ -17,6 +15,6 @@ export const routes: Routes = [
     ]
   },
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   
 ];
