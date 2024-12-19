@@ -116,22 +116,3 @@
 .sidenav-link-chevron-icon {
   margin-left: auto; /* Automatically push the chevron icon to the right */
 }
-
-:host {
-  display: grid;
-  height: 100vh;
-  grid-template-columns: 1fr 1fr;
-}
-
-.variable {
-  background-color: var(--primary-color);
-}
-
-.green {
-  background-color: #00bd11;
-}
-
-.gradient {
-  background: linear-gradient(to bottom, #005aff, #de00ff);
-}
-

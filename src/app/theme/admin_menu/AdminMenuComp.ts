@@ -1,7 +1,8 @@
 import { Component, input, OnInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
-import { SvgIconComponent } from '../../svg_icon/SvgIconComp';
+import { SvgIconComp } from '../../svg-icon/SvgIconComp';
+
 //import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { faChevronDown, faChevronRight, faHome, faUser, faBars, faClose, faCog, faPenNib } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,10 +11,16 @@ import { SvgIconComponent } from '../../svg_icon/SvgIconComp';
   templateUrl: 'AdminMenuComp.html',
   styleUrls: ['AdminMenuComp.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule, SvgIconComponent]
+  imports: [CommonModule, RouterModule, SvgIconComp]
 })
 
 export class AdminMenuComp {
+
+  currentIconColor: string = '#000'; // Initial icon color is black
+
+  toggleTheme() {
+    this.currentIconColor = this.currentIconColor === '#000' ? '#fff' : '#000'; // Toggle between black and white
+  }
 
   isLeftSidebarCollapsed = input.required<boolean>();
   changeLeftSidebarCollapsed = output<boolean>();

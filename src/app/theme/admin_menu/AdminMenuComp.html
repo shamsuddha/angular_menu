@@ -1,17 +1,16 @@
 <div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      
-      <app-svg-icon [path]="'../../../../public/assets/icon/bars-solid.svg'"></app-svg-icon>
-      <!-- <img src="/public/assets/svg_icon/bars-solid.svg" alt="Icon">       -->
-
-      </button>
-
+      a
+      <!-- <SvgIconComp iconName="BANGLADESH" [iconColor]="'green'"></SvgIconComp> -->
+      <!-- <img src="assets/icons/coffee.svg" alt="Coffee Icon" width="30" style="color: red;" /> -->
+    </button>
     <div class="logo-text" *ngIf="!isLeftSidebarCollapsed()">
       App
     </div>
     <button class="btn-close" (click)="closeSidebar()" *ngIf="!isLeftSidebarCollapsed()">
       <!-- <fa-icon [icon]="faClose" class="sidenav-link-icon"></fa-icon> -->
+       b
     </button>
   </div>
   <div class="sidenav-nav">

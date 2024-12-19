@@ -1,0 +1,5 @@
+< xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g id="CHECK_ICON">
+    <path fill="currentColor" d="M20 50 L40 70 L80 10" stroke="currentColor" stroke-width="10" fill="none" />
+  </g>
+</svg>
