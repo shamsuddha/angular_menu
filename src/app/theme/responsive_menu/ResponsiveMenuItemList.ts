@@ -1,6 +1,6 @@
 import { MenuItem } from "../../MenuItem";
 
-export const ResponsiveMenuItemList : Array<MenuItem> = [
+export const ResponsiveMenuItemList: Array<MenuItem> = [
   {
     id: '1',
     label: 'Level 1',
@@ -29,7 +29,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                 routerLink: 'na',
                 closed: true,
                 subMenuItemList: [
-                  
+
                 ]
               },
               {
@@ -46,7 +46,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -56,13 +56,13 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   }
-                  
+
                 ]
               }
-              
+
             ]
           },
           {
@@ -79,7 +79,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                 routerLink: 'na',
                 closed: true,
                 subMenuItemList: [
-                  
+
                 ]
               },
               {
@@ -96,7 +96,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -141,7 +141,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -158,7 +158,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         routerLink: 'na',
                         closed: true,
                         subMenuItemList: [
-                          
+
                         ]
                       },
                       {
@@ -170,7 +170,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         subMenuItemList: []
                       },
                     ]
-                  }    
+                  }
                 ]
               },
               {
@@ -187,7 +187,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -199,7 +199,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     subMenuItemList: []
                   },
                 ]
-              }              
+              }
             ]
           },
           {
@@ -240,7 +240,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -257,7 +257,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         routerLink: 'na',
                         closed: true,
                         subMenuItemList: [
-                          
+
                         ]
                       },
                       {
@@ -269,7 +269,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         subMenuItemList: []
                       },
                     ]
-                  }    
+                  }
                 ]
               },
               {
@@ -286,7 +286,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -298,7 +298,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     subMenuItemList: []
                   },
                 ]
-              }              
+              }
             ]
           },
           {
@@ -319,7 +319,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
     icon: null,
     closed: true,
     routerLink: 'na',
-        subMenuItemList: [
+    subMenuItemList: [
       {
         id: '2_1',
         label: 'Level 2_1',
@@ -341,7 +341,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                 routerLink: 'na',
                 closed: true,
                 subMenuItemList: [
-                  
+
                 ]
               },
               {
@@ -358,7 +358,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -368,13 +368,13 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   }
-                  
+
                 ]
               }
-              
+
             ]
           },
           {
@@ -391,7 +391,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                 routerLink: 'na',
                 closed: true,
                 subMenuItemList: [
-                  
+
                 ]
               },
               {
@@ -408,7 +408,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -453,7 +453,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -470,7 +470,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         routerLink: 'na',
                         closed: true,
                         subMenuItemList: [
-                          
+
                         ]
                       },
                       {
@@ -482,7 +482,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         subMenuItemList: []
                       },
                     ]
-                  }    
+                  }
                 ]
               },
               {
@@ -499,7 +499,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -511,7 +511,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     subMenuItemList: []
                   },
                 ]
-              }              
+              }
             ]
           },
           {
@@ -552,7 +552,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -569,7 +569,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         routerLink: 'na',
                         closed: true,
                         subMenuItemList: [
-                          
+
                         ]
                       },
                       {
@@ -581,7 +581,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                         subMenuItemList: []
                       },
                     ]
-                  }    
+                  }
                 ]
               },
               {
@@ -598,7 +598,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     routerLink: 'na',
                     closed: true,
                     subMenuItemList: [
-                      
+
                     ]
                   },
                   {
@@ -610,7 +610,7 @@ export const ResponsiveMenuItemList : Array<MenuItem> = [
                     subMenuItemList: []
                   },
                 ]
-              }              
+              }
             ]
           },
           {

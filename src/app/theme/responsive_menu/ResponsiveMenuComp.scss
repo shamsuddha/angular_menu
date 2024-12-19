@@ -4,6 +4,10 @@
   border-bottom: 1px solid #ddd;
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .menu {
   list-style-type: none;
   margin: 0;
@@ -95,50 +99,115 @@
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .navbar {
-    padding: 10px 15px;
+
+
+  /* Main Menu */
+  .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Show hamburger menu */
-  .navbar-toggler {
+  .menu-item {
+    position: relative;
+  }
+
+  .menu-item>a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+    transition: background 0.3s;
+  }
+
+  .menu-item>a:hover {
+    background-color: #555;
+    cursor: pointer;
+  }
+
+  /* Submenu Styles */
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .submenu.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .submenu-item>a {
+    color: #fff;
+    padding: 0.75rem 1rem;
+    display: block;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .submenu-item>a:hover {
+    background-color: #555;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .menu {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    background-color: #333;
+    padding: 1rem 0;
+  }
+
+  .menu.show {
     display: block;
   }
 
-  /* Set the menu to be vertical and hidden initially */
-  .menu {
-    flex-direction: column;
-    display: none;
+  .menu-item {
+    width: 100%;
   }
 
-  /* Display the menu vertically on mobile */
-  .menu.show {
-    display: flex;
-    flex-direction: column;
-    border: none;
-
-  }
-
-  /* Submenus should also be displayed vertically on mobile */
   .submenu {
-    position: relative;
-    left: 0;
-    top: 0;
-    border: none;
+    position: static;
+    box-shadow: none;
+    width: 100%;
   }
 
-  /* Second and third level submenus should also stack vertically */
-  .submenu .submenu {
-    position: relative;
-    margin-left: 0;
-    border: none;
-
+  .submenu-item a {
+    padding-left: 2rem;
   }
 
-  /* Make sure dropdown arrows appear for each level on mobile */
-  .submenu-item>a::after {
-    content: " ▼";
-    padding-left: 10px;
-    border: none;
-
+  .submenu-item .submenu {
+    padding-left: 1rem;
   }
+
+
+
 }

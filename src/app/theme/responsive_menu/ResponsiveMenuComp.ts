@@ -19,8 +19,9 @@ export class ResponsiveMenuComp implements OnInit {
 
   // Menu list
   menuItemList: Array<MenuItem> = ResponsiveMenuItemList;
+  
 
-  isMainMenuOpen = false; // Track main menu state
+  isMainMenuOpen: boolean = false; // Track main menu state
 
   toggleDropdown(id: string | null) {
 

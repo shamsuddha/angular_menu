@@ -1,16 +1,15 @@
 <div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      a
-      <!-- <SvgIconComp iconName="BANGLADESH" [iconColor]="'green'"></SvgIconComp> -->
-      <!-- <img src="assets/icons/coffee.svg" alt="Coffee Icon" width="30" style="color: red;" /> -->
+      <i class="fas fa-bars"></i>
+      <!-- <SvgIconComp iconName="CHECK_ICON" [iconColor]="'green'"></SvgIconComp> -->
     </button>
     <div class="logo-text" *ngIf="!isLeftSidebarCollapsed()">
       App
     </div>
     <button class="btn-close" (click)="closeSidebar()" *ngIf="!isLeftSidebarCollapsed()">
       <!-- <fa-icon [icon]="faClose" class="sidenav-link-icon"></fa-icon> -->
-       b
+      <i class="fas fa-times"></i>
     </button>
   </div>
   <div class="sidenav-nav">
@@ -19,6 +18,7 @@
         <!-- Menu item with no submenu -->
         <a class="sidenav-nav-link" *ngIf="!item.subMenuItemList" [routerLink]="item.routerLink">
           <!-- <fa-icon [icon]="item.icon" class="sidenav-link-icon"></fa-icon> -->
+          <i class="fas fa-home"></i>
           <span class="sidenav-link-text" *ngIf="!isLeftSidebarCollapsed()">{{ item.label }}</span>
         </a>
         <!-- Menu item with submenu -->
@@ -27,6 +27,7 @@
             <!-- Left side (Icon and Label) -->
             <div class="d-flex align-items-center">
               <!-- <fa-icon [icon]="item.icon" class="sidenav-link-icon"></fa-icon> -->
+              <i class="fas fa-home"></i>
               <span class="sidenav-link-text ml-2">{{ item.label }}</span>
             </div>
             <!-- Right side (Chevron Icon) -->
@@ -39,7 +40,8 @@
             class="nav flex-column" style="list-style: none;">
             <li *ngFor="let subItem of item.subMenuItemList" class="sidenav-nav-item">
               <a *ngIf="!subItem.subMenuItemList" [routerLink]="subItem.routerLink" class="sidenav-nav-link">
-                <!-- <fa-icon [icon]="subItem.icon" class="sidenav-link-icon"></fa-icon> -->
+                <!-- <fa-icon [icon]="subItem.icon" class="sidenav-link-icon"></fa-icon> --> 
+                <i class="fas fa-home"></i>
                 {{ subItem.label }}
               </a>
               <!-- Nested submenu (Level 2) -->
@@ -47,6 +49,7 @@
                 <a class="sidenav-nav-link" (click)="toggleMenu(subItem.id)">
                   <!-- <fa-icon [icon]="subItem.icon" class="sidenav-link-icon"></fa-icon> -->
                   <!-- <i class="{{subItem.icon}}"></i> -->
+                  <i class="fas fa-home"></i>
                   {{ subItem.label }}
                   <!-- <fa-icon *ngIf="!isLeftSidebarCollapsed()"
                     [icon]="menuStates[subItem.id] ? faChevronDown : faChevronRight" class="sidenav-link-chevron-icon">
@@ -56,6 +59,7 @@
                   <li *ngFor="let subSubItem of subItem.subMenuItemList" class="sidenav-nav-item">
                     <a [routerLink]="subSubItem.routerLink" class="sidenav-nav-link">
                       <!-- <fa-icon [icon]="subSubItem.icon" class="sidenav-link-icon"></fa-icon> -->
+                      <i class="fas fa-home"></i>
                       {{ subSubItem.label }}
                     </a>
                   </li>

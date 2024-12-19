@@ -1,4 +1,10 @@
 <nav class="navbar">
+  <!-- Animated Hamburger Button -->
+  <button class="menu-toggle" (click)="isMainMenuOpen = !isMainMenuOpen" [class.open]="isMainMenuOpen">
+    <span>x</span>
+  </button>
+
+  <!-- Main Menu -->
   <ul class="menu" [class.show]="isMainMenuOpen">
     <li *ngFor="let itemL1 of menuItemList" class="menu-item">
       <a (click)="toggleDropdown(itemL1.id)">{{ itemL1.label }}</a>
@@ -25,6 +31,8 @@
     </li>
   </ul>
 </nav>
+
+
 <!-- <nav>
   <ul class="menu" [class.show]="isMainMenuOpen">
     <li *ngFor="let itemL1 of menuItemList" class="menu-item">
