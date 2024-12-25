@@ -1,3 +1,4 @@
+import { MenuItem } from './../../MenuItem';
 import { Component, input, OnInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
@@ -71,6 +72,11 @@ export class AdminMenuComp {
 
   closeSidebar(): void {
     this.changeLeftSidebarCollapsed.emit(true);
+  }
+
+  toggleMenuCollapse(menuId: string): void  {
+    console.log(menuId);
+    this.menuStates[menuId] = !this.menuStates[menuId];
   }
 
 }

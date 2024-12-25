@@ -116,3 +116,23 @@
 .sidenav-link-chevron-icon {
   margin-left: auto; /* Automatically push the chevron icon to the right */
 }
+
+
+
+.submenu-popout {
+  position: absolute;
+  left: 100%;
+  top: 100px;
+  background-color: #34495e;
+  width: 200px;
+  display: block;
+}
+
+.submenu-popout.show {
+  max-height: 500px;
+  opacity: 1;
+  display: block;
+  z-index: 10000000000000;
+  padding: 10px;
+
+}
