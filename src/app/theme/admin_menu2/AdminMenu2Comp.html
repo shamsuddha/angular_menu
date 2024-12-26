@@ -1,0 +1,85 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <span>Menu</span>
+  </div>
+
+  <ul class="sidebar-list">
+    <ng-container *ngFor="let item of menuItemList; let i = index">
+      <li>
+        <a [routerLink]="item.routerLink" *ngIf="!item.subMenuItemList">
+          {{ item.label }}
+        </a>
+        <a (click)="toggleSubmenu(i)" *ngIf="item.subMenuItemList">
+          {{ item.label }}
+        </a>
+        <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === i}">
+          <ul class="submenu">
+            <ng-container *ngFor="let subItem of item.subMenuItemList; let j = index">
+              <li>
+                <a [routerLink]="subItem.routerLink" *ngIf="!subItem.subMenuItemList">
+                  {{ subItem.label }}
+                </a>
+                <a (click)="toggleSubmenu(j)" *ngIf="subItem.subMenuItemList">
+                  {{ subItem.label }}
+                </a>
+                <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === j}">
+                  <ul class="submenu">
+                    <ng-container *ngFor="let subSubItem of subItem.subMenuItemList">
+                      <li>
+                        <a [routerLink]="subSubItem.routerLink">{{ subSubItem.label }}</a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</div>
+
+
+<!-- 
+<div class="sidebar">
+  <div class="sidebar-header">
+    <span>Menu</span>
+  </div>
+
+  <ul class="sidebar-list">
+    <ng-container *ngFor="let item of menuItemList; let i = index">
+      <li>
+        <a [routerLink]="item.routerLink" *ngIf="!item.subMenuItemList">
+          {{ item.label }}
+        </a>
+        <a (click)="toggleSubmenu(i)" *ngIf="item.subMenuItemList">
+          {{ item.label }}
+        </a>
+        <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === i}">
+          <ul class="submenu">
+            <ng-container *ngFor="let subItem of item.subMenuItemList; let j = index">
+              <li>
+                <a [routerLink]="subItem.routerLink" *ngIf="!subItem.subMenuItemList">
+                  {{ subItem.label }}
+                </a>
+                <a (click)="toggleSubmenu(j)" *ngIf="subItem.subMenuItemList">
+                  {{ subItem.label }}
+                </a>
+                <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === j}">
+                  <ul class="submenu">
+                    <ng-container *ngFor="let subSubItem of subItem.subMenuItemList">
+                      <li>
+                        <a [routerLink]="subSubItem.routerLink">{{ subSubItem.label }}</a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</div> -->
