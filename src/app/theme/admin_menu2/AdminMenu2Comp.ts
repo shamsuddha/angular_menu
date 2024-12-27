@@ -94,7 +94,7 @@ export class AdminMenu2Comp {
     this.nestedSubmenuIndex = {};
   }
 
-  toggleSubmenu(index: number) {
+  toggleSubmenuForL0(index: number) {
     if (this.activeSubmenuIndex === index) {
       this.activeSubmenuIndex = null;
     } else {
@@ -102,7 +102,7 @@ export class AdminMenu2Comp {
     }
   }
 
-  toggleNestedSubmenu(parentIndex: number, childIndex: number) {
+  toggleSubmenuForL1(parentIndex: number, childIndex: number) {
     if (!this.nestedSubmenuIndex[parentIndex]) {
       this.nestedSubmenuIndex[parentIndex] = null;
     }

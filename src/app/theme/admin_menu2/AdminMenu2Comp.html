@@ -11,33 +11,28 @@
       <i class="fas fa-times"></i>
     </button>
   </div>
-
-  <!-- Sidebar Menu -->
   <ul class="sidebar-list" style="list-style: none;">
-    <li *ngFor="let item of menuItemList; let i = index" class="sidebar-item">
-      <a href="#" (click)="toggleSubmenu(i)" [ngClass]="{'has-submenu': item.subMenuItemList}">
-        <i class="{{ item.icon }}"></i>
-        <span *ngIf="!isCollapsed" class="px-2">{{ item.label }}</span>
+    <li *ngFor="let itemL0 of menuItemList; let i = index" class="sidebar-item">
+      <a href="#" (click)="toggleSubmenuForL0(i)" [ngClass]="{'has-submenu': itemL0.subMenuItemList}">
+        <i class="{{ itemL0.icon }}"></i>
+        <span *ngIf="!isCollapsed" class="px-2">{{ itemL0.label }}</span>
       </a>
-
-      <!-- First level submenu items -->
-      <div *ngIf="item.subMenuItemList" [ngClass]="{'show': activeSubmenuIndex === i, 'submenu-popout': isCollapsed}"
+      <div *ngIf="itemL0.subMenuItemList" [ngClass]="{'show': activeSubmenuIndex === i, 'submenu-popout': isCollapsed}"
         class="submenu-container">
         <ul class="submenu" style="list-style: none;">
-          <li *ngFor="let subItem of item.subMenuItemList; let j = index" class="submenu-item">
-            <a href="#" (click)="toggleNestedSubmenu(i, j)" [ngClass]="{'has-submenu': subItem.subMenuItemList}">
-              <i class="{{ subItem.icon }}"></i>
-              <span class="px-2">{{ subItem.label }}</span>
+          <li *ngFor="let itemL1 of itemL0.subMenuItemList; let j = index" class="submenu-item">
+            <a href="#" (click)="toggleSubmenuForL1(i, j)" [ngClass]="{'has-submenu': itemL1.subMenuItemList}">
+              <i class="{{ itemL1.icon }} pe-2"></i>
+              {{itemL1.label}}
             </a>
-            <!-- Second level submenu items -->
-            <div *ngIf="subItem.subMenuItemList"
+            <div *ngIf="itemL1.subMenuItemList"
               [ngClass]="{'show': nestedSubmenuIndex[i] === j, 'submenu-popout': isCollapsed}"
               class="submenu-container">
               <ul class="submenu" style="list-style: none;">
-                <li *ngFor="let nestedSubItem of subItem.subMenuItemList; let k = index" class="submenu-item">
+                <li *ngFor="let itemL2 of itemL1.subMenuItemList; let k = index" class="submenu-item">
                   <a href="#">
-                    <i class="{{ nestedSubItem.icon }}"></i>
-                    <span class="px-2">{{ nestedSubItem.label }}</span>
+                    <i class="{{ itemL2.icon }} pe-2"></i>
+                    {{ itemL2.label }}
                   </a>
                 </li>
               </ul>
