@@ -16,24 +16,8 @@ import { AdminMenu2Comp } from "./admin_menu2/AdminMenu2Comp";
 
 export class ThemeComp implements OnInit {
 
-  isLeftSidebarCollapsed = signal<boolean>(true);
-  screenWidth = signal<number>(window.innerWidth);
-
   ngOnInit(): void {
-    this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
-  }
 
-  @HostListener('window:resize')
-
-  onResize() {
-    this.screenWidth.set(window.innerWidth);
-    if (this.screenWidth() < 768) {
-      this.isLeftSidebarCollapsed.set(true);
-    }
-  }
-
-  changeLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
-    this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
   }
 
 }

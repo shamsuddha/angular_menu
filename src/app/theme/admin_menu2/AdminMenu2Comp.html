@@ -1,19 +1,21 @@
 <div class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
-  <button (click)="toggleSidebar()" class="toggle-button">
-    {{ isCollapsed ? 'Expand' : 'Collapse' }}
-  </button>
-
-  <div class="sidebar-header">
-    <span>Admin Panel</span>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="logo-text" *ngIf="!isCollapsed">
+      App
+    </div>
+    <button class="btn-close" (click)="closeSidebar()" *ngIf="!isCollapsed">
+      <i class="fas fa-times"></i>
+    </button>
   </div>
-
   <ul class="sidebar-list">
     <li *ngFor="let item of menuItemList; let i = index" class="sidebar-item">
       <a href="#" (click)="toggleSubmenu(i)" [ngClass]="{'has-submenu': item.submenu}">
         <i class="{{ item.icon }}"></i> <!-- Replace with actual icon class -->
         <span *ngIf="!isCollapsed">{{ item.label }}</span>
       </a>
-
       <!-- First level submenu items -->
       <div *ngIf="item.submenu" [ngClass]="{'show': activeSubmenuIndex === i, 'submenu-popout': isCollapsed}" class="submenu-container">
         <ul class="submenu">
@@ -21,7 +23,6 @@
             <a href="#" (click)="toggleNestedSubmenu(i, j)" [ngClass]="{'has-submenu': subItem.submenu}">
               {{ subItem.label }}
             </a>
-
             <!-- Second level submenu items -->
             <div *ngIf="subItem.submenu" [ngClass]="{'show': nestedSubmenuIndex[i] === j, 'submenu-popout': isCollapsed}" class="submenu-container">
               <ul class="submenu">

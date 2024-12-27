@@ -1,4 +1,4 @@
-import { Component, input, OnInit, output } from '@angular/core';
+import { Component, HostListener, input, OnInit, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -17,10 +17,12 @@ interface MenuItem {
 })
 
 export class AdminMenu2Comp {
+
   isCollapsed: boolean = false;
   activeSubmenuIndex: number | null = null;  // Tracks active first-level submenu
   nestedSubmenuIndex: { [key: number]: number | null } = {}; // Tracks active second-level submenu for each first-level item
-
+  screenWidth: number = window.innerWidth; // To track the screen width
+  
   menuItemList = [
     {
       label: 'Dashboard',
@@ -51,8 +53,28 @@ export class AdminMenu2Comp {
     }
   ];
 
+  constructor() {
+    // Set the initial state based on screen size
+    if (this.screenWidth < 768) {
+      this.isCollapsed = true; // Collapse sidebar on mobile by default
+    }
+  }
+
+  // Listen for window resize and adjust the sidebar state
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth < 768) {
+      this.isCollapsed = true; // Collapse sidebar on mobile
+    } else {
+      this.isCollapsed = false; // Expand sidebar on larger screens
+    }
+  }
+
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
+    this.activeSubmenuIndex = null;
+    this.nestedSubmenuIndex = {};
   }
 
   toggleSubmenu(index: number) {
@@ -73,5 +95,12 @@ export class AdminMenu2Comp {
     } else {
       this.nestedSubmenuIndex[parentIndex] = childIndex; // Open the nested submenu
     }
+  }
+
+  // Close the sidebar by collapsing it
+  closeSidebar() {
+    this.isCollapsed = true;
+    this.activeSubmenuIndex = null;
+    this.nestedSubmenuIndex = {};
   }
 }
