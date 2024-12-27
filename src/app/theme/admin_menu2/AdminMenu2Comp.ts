@@ -60,9 +60,9 @@ export class AdminMenu2Comp {
               subMenuItemList: []
             },
             { 
-              id: '323', 
+              id: '322', 
               label: 'Level 2.2', 
-              icon: 'fa fa-shopping-cart',
+              icon: 'fa fa-home',
               routerLink: '/help',
               subMenuItemList: []
             }
