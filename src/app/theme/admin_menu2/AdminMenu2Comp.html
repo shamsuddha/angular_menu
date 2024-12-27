@@ -1,85 +1,38 @@
-<div class="sidebar">
+<div class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
+  <button (click)="toggleSidebar()" class="toggle-button">
+    {{ isCollapsed ? 'Expand' : 'Collapse' }}
+  </button>
+
   <div class="sidebar-header">
-    <span>Menu</span>
+    <span>Admin Panel</span>
   </div>
 
   <ul class="sidebar-list">
-    <ng-container *ngFor="let item of menuItemList; let i = index">
-      <li>
-        <a [routerLink]="item.routerLink" *ngIf="!item.subMenuItemList">
-          {{ item.label }}
-        </a>
-        <a (click)="toggleSubmenu(i)" *ngIf="item.subMenuItemList">
-          {{ item.label }}
-        </a>
-        <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === i}">
-          <ul class="submenu">
-            <ng-container *ngFor="let subItem of item.subMenuItemList; let j = index">
-              <li>
-                <a [routerLink]="subItem.routerLink" *ngIf="!subItem.subMenuItemList">
-                  {{ subItem.label }}
-                </a>
-                <a (click)="toggleSubmenu(j)" *ngIf="subItem.subMenuItemList">
-                  {{ subItem.label }}
-                </a>
-                <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === j}">
-                  <ul class="submenu">
-                    <ng-container *ngFor="let subSubItem of subItem.subMenuItemList">
-                      <li>
-                        <a [routerLink]="subSubItem.routerLink">{{ subSubItem.label }}</a>
-                      </li>
-                    </ng-container>
-                  </ul>
-                </div>
-              </li>
-            </ng-container>
-          </ul>
-        </div>
-      </li>
-    </ng-container>
+    <li *ngFor="let item of menuItemList; let i = index" class="sidebar-item">
+      <a href="#" (click)="toggleSubmenu(i)" [ngClass]="{'has-submenu': item.submenu}">
+        <i class="{{ item.icon }}"></i> <!-- Replace with actual icon class -->
+        <span *ngIf="!isCollapsed">{{ item.label }}</span>
+      </a>
+
+      <!-- First level submenu items -->
+      <div *ngIf="item.submenu" [ngClass]="{'show': activeSubmenuIndex === i, 'submenu-popout': isCollapsed}" class="submenu-container">
+        <ul class="submenu">
+          <li *ngFor="let subItem of item.submenu; let j = index" class="submenu-item">
+            <a href="#" (click)="toggleNestedSubmenu(i, j)" [ngClass]="{'has-submenu': subItem.submenu}">
+              {{ subItem.label }}
+            </a>
+
+            <!-- Second level submenu items -->
+            <div *ngIf="subItem.submenu" [ngClass]="{'show': nestedSubmenuIndex[i] === j, 'submenu-popout': isCollapsed}" class="submenu-container">
+              <ul class="submenu">
+                <li *ngFor="let nestedSubItem of subItem.submenu; let k = index" class="submenu-item">
+                  <a href="#">{{ nestedSubItem.label }}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </div>
-
-
-<!-- 
-<div class="sidebar">
-  <div class="sidebar-header">
-    <span>Menu</span>
-  </div>
-
-  <ul class="sidebar-list">
-    <ng-container *ngFor="let item of menuItemList; let i = index">
-      <li>
-        <a [routerLink]="item.routerLink" *ngIf="!item.subMenuItemList">
-          {{ item.label }}
-        </a>
-        <a (click)="toggleSubmenu(i)" *ngIf="item.subMenuItemList">
-          {{ item.label }}
-        </a>
-        <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === i}">
-          <ul class="submenu">
-            <ng-container *ngFor="let subItem of item.subMenuItemList; let j = index">
-              <li>
-                <a [routerLink]="subItem.routerLink" *ngIf="!subItem.subMenuItemList">
-                  {{ subItem.label }}
-                </a>
-                <a (click)="toggleSubmenu(j)" *ngIf="subItem.subMenuItemList">
-                  {{ subItem.label }}
-                </a>
-                <div class="submenu-container" [ngClass]="{'show': activeSubmenuIndex === j}">
-                  <ul class="submenu">
-                    <ng-container *ngFor="let subSubItem of subItem.subMenuItemList">
-                      <li>
-                        <a [routerLink]="subSubItem.routerLink">{{ subSubItem.label }}</a>
-                      </li>
-                    </ng-container>
-                  </ul>
-                </div>
-              </li>
-            </ng-container>
-          </ul>
-        </div>
-      </li>
-    </ng-container>
-  </ul>
-</div> -->

@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 interface MenuItem {
-  id: string;
-  routerLink?: string;
   label: string;
-  subMenuItemList?: MenuItem[];
+  icon?: string;
+  submenu?: MenuItem[]; // Define submenu as an optional array of MenuItem objects
 }
 
 @Component({
@@ -18,39 +17,61 @@ interface MenuItem {
 })
 
 export class AdminMenu2Comp {
-  menuItemList: MenuItem[] = [
+  isCollapsed: boolean = false;
+  activeSubmenuIndex: number | null = null;  // Tracks active first-level submenu
+  nestedSubmenuIndex: { [key: number]: number | null } = {}; // Tracks active second-level submenu for each first-level item
+
+  menuItemList = [
     {
-      id: '1',
-      routerLink: 'dashboard',
-      label: 'Dashboard'
+      label: 'Dashboard',
+      icon: 'fa fa-home',
+      submenu: null
     },
     {
-      id: '2',
-      routerLink: 'settings',
-      label: 'Settings'
-    },
-    {
-      id: '3',
-      label: 'Multi nav',
-      subMenuItemList: [
-        { id: '31', label: 'Level 3.1', routerLink: '/about-us' },
+      label: 'Products',
+      icon: 'fa fa-box',
+      submenu: [
+        { label: 'Add Product', submenu: null },
         {
-          id: '32',
-          label: 'Level 3.2',
-          subMenuItemList: [
-            { id: '321', label: 'Level 3.1', routerLink: '/contact-us' },
-            { id: '323', label: 'Level 3.2', routerLink: '/help' }
+          label: 'Categories',
+          submenu: [
+            { label: 'Add Category', submenu: null },
+            { label: 'Manage Categories', submenu: null }
           ]
         }
+      ]
+    },
+    {
+      label: 'Orders',
+      icon: 'fa fa-shopping-cart',
+      submenu: [
+        { label: 'New Orders', submenu: null },
+        { label: 'Order History', submenu: null }
       ]
     }
   ];
 
-  activeSubmenuIndex: number | null = null; 
-
-  toggleSubmenu(index: number) {
-    this.activeSubmenuIndex = this.activeSubmenuIndex === index ? null : index;
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
   }
 
+  toggleSubmenu(index: number) {
+    if (this.activeSubmenuIndex === index) {
+      this.activeSubmenuIndex = null;  // Close the submenu if it's already active
+    } else {
+      this.activeSubmenuIndex = index;  // Open the selected submenu
+    }
+  }
 
+  toggleNestedSubmenu(parentIndex: number, childIndex: number) {
+    if (!this.nestedSubmenuIndex[parentIndex]) {
+      this.nestedSubmenuIndex[parentIndex] = null;
+    }
+
+    if (this.nestedSubmenuIndex[parentIndex] === childIndex) {
+      this.nestedSubmenuIndex[parentIndex] = null; // Close the nested submenu if already active
+    } else {
+      this.nestedSubmenuIndex[parentIndex] = childIndex; // Open the nested submenu
+    }
+  }
 }
