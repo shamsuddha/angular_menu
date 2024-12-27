@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 interface MenuItem {
-  label: string;
-  icon?: string;
-  submenu?: MenuItem[]; // Define submenu as an optional array of MenuItem objects
+  label: string | null;
+  icon: string | null;
+  subMenuItemList: MenuItem[];
 }
 
 @Component({
@@ -22,52 +22,69 @@ export class AdminMenu2Comp {
   activeSubmenuIndex: number | null = null;  // Tracks active first-level submenu
   nestedSubmenuIndex: { [key: number]: number | null } = {}; // Tracks active second-level submenu for each first-level item
   screenWidth: number = window.innerWidth; // To track the screen width
-  
+
   menuItemList = [
     {
-      label: 'Dashboard',
-      icon: 'fa fa-home',
-      submenu: null
+      id: '1',
+      routerLink: 'dashboard',
+      icon: 'fa fa-box',
+      label: 'Dashboard'
     },
     {
-      label: 'Products',
+      id: '2',
+      routerLink: 'settings',
+      icon: 'fa fa-home',
+      label: 'Settings'
+    },
+    {
+      id: '3',
+      label: 'Multi nav',
       icon: 'fa fa-box',
-      submenu: [
-        { label: 'Add Product', submenu: null },
+      subMenuItemList: [
+        { 
+          id: '31', 
+          label: 'Level 1.1', 
+          routerLink: '/about-us',
+          icon: 'fa fa-box',
+        },
         {
-          label: 'Categories',
-          submenu: [
-            { label: 'Add Category', submenu: null },
-            { label: 'Manage Categories', submenu: null }
+          id: '32',
+          label: 'Level 1.2',
+          icon: 'fa fa-shopping-cart',
+          subMenuItemList: [
+            { 
+              id: '321', 
+              label: 'Level 2.1', 
+              icon: 'fa fa-home',
+              routerLink: '/contact-us',
+              subMenuItemList: []
+            },
+            { 
+              id: '323', 
+              label: 'Level 2.2', 
+              icon: 'fa fa-shopping-cart',
+              routerLink: '/help',
+              subMenuItemList: []
+            }
           ]
         }
-      ]
-    },
-    {
-      label: 'Orders',
-      icon: 'fa fa-shopping-cart',
-      submenu: [
-        { label: 'New Orders', submenu: null },
-        { label: 'Order History', submenu: null }
       ]
     }
   ];
 
   constructor() {
-    // Set the initial state based on screen size
     if (this.screenWidth < 768) {
-      this.isCollapsed = true; // Collapse sidebar on mobile by default
+      this.isCollapsed = true;
     }
   }
 
-  // Listen for window resize and adjust the sidebar state
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth < 768) {
-      this.isCollapsed = true; // Collapse sidebar on mobile
+      this.isCollapsed = true;
     } else {
-      this.isCollapsed = false; // Expand sidebar on larger screens
+      this.isCollapsed = false;
     }
   }
 
@@ -79,9 +96,9 @@ export class AdminMenu2Comp {
 
   toggleSubmenu(index: number) {
     if (this.activeSubmenuIndex === index) {
-      this.activeSubmenuIndex = null;  // Close the submenu if it's already active
+      this.activeSubmenuIndex = null;
     } else {
-      this.activeSubmenuIndex = index;  // Open the selected submenu
+      this.activeSubmenuIndex = index;
     }
   }
 
@@ -89,15 +106,13 @@ export class AdminMenu2Comp {
     if (!this.nestedSubmenuIndex[parentIndex]) {
       this.nestedSubmenuIndex[parentIndex] = null;
     }
-
     if (this.nestedSubmenuIndex[parentIndex] === childIndex) {
-      this.nestedSubmenuIndex[parentIndex] = null; // Close the nested submenu if already active
+      this.nestedSubmenuIndex[parentIndex] = null;
     } else {
-      this.nestedSubmenuIndex[parentIndex] = childIndex; // Open the nested submenu
+      this.nestedSubmenuIndex[parentIndex] = childIndex;
     }
   }
 
-  // Close the sidebar by collapsing it
   closeSidebar() {
     this.isCollapsed = true;
     this.activeSubmenuIndex = null;
